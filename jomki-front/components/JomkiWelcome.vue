@@ -12,6 +12,10 @@ const props = defineProps({
   title: {
     type: String,
     default: "Welcome to Jomki!"
+  },
+  contributeOnGithub: {
+    type: String,
+    default: "Contribute to Jomki!"
   }
 })
 useHead({
@@ -29,9 +33,10 @@ useHead({
     class="font-sans antialiased bg-white dark:bg-black text-black dark:text-white min-h-screen place-content-center flex flex-col items-center justify-center p-8 text-sm sm:text-base">
     <div class="grid grid-cols-3 gap-4 md:gap-8 max-w-5xl w-full z-20">
       <div class="flex justify-between items-end col-span-3">
-        <img src="/jomki-logo-light.png" />
-        <a href="https://github.com/nuxt/framework/releases/tag/{{ version }}" target="_blank" rel="noopener"
-          class="flex justify-end pb-1 sm:pb-2" v-text="version" />
+        <picture>
+          <source srcset="jomki-banner-dark.png" media="(prefers-color-scheme: dark)">
+          <img src="jomki-banner-light.png" alt="Jomki Banner">
+        </picture>
         <div class="spotlight-wrapper">
           <div class="fixed z-10 left-0 right-0 spotlight"></div>
         </div>
@@ -53,23 +58,7 @@ useHead({
           creating an <a href="https://v3.nuxtjs.org/docs/directory-structure/app" target="_blank" rel="noopener"
             class="bg-gray-100 dark:bg-white/10 rounded font-mono p-1 font-bold">app.vue</a> file.</p>
       </div>
-      <a href="https://v3.nuxtjs.org" target="_blank" rel="noopener"
-        class="gradient-border cursor-pointer col-span-3 sm:col-span-1 p-4 flex flex-col">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M20 10.4217C21.9467 9.12833 24.59 8.33333 27.5 8.33333C30.4117 8.33333 33.0533 9.12833 35 10.4217V32.0883C33.0533 30.795 30.4117 30 27.5 30C24.59 30 21.9467 30.795 20 32.0883M20 10.4217V32.0883V10.4217ZM20 10.4217C18.0533 9.12833 15.41 8.33333 12.5 8.33333C9.59 8.33333 6.94667 9.12833 5 10.4217V32.0883C6.94667 30.795 9.59 30 12.5 30C15.41 30 18.0533 30.795 20 32.0883V10.4217Z"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-          <rect x="23.3334" y="13.3333" width="8.33334" height="1.66667" rx="0.833333" fill="currentColor"></rect>
-          <rect x="8.33337" y="13.3333" width="8.33333" height="1.66667" rx="0.833333" fill="currentColor"></rect>
-          <rect x="8.33337" y="18.3333" width="8.33333" height="1.66667" rx="0.833333" fill="currentColor"></rect>
-          <rect x="8.33337" y="23.3333" width="8.33333" height="1.66667" rx="0.833334" fill="currentColor"></rect>
-          <rect x="23.3334" y="18.3333" width="8.33334" height="1.66667" rx="0.833333" fill="currentColor"></rect>
-          <rect x="23.3334" y="23.3333" width="8.33334" height="1.66667" rx="0.833334" fill="currentColor"></rect>
-        </svg>
-        <h5 class="font-semibold text-xl mt-4">Documentation</h5>
-        <p class="mt-2" v-text="readDocs" />
-      </a>
-      <a href="https://github.com/nuxt/framework" target="_blank" rel="noopener"
+      <a href="https://github.com/Jomki-Social-Network/jomki-app" target="_blank" rel="noopener"
         class="cursor-pointer gradient-border col-span-3 sm:col-span-1 p-4 flex flex-col">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd"
@@ -77,22 +66,13 @@ useHead({
             fill="currentColor"></path>
         </svg>
         <h5 class="font-semibold text-xl mt-4">GitHub</h5>
-        <p class="mt-2" v-text="starGitHub" />
-      </a>
-      <a href="https://twitter.com/nuxt_js" target="_blank" rel="noopener"
-        class="cursor-pointer gradient-border col-span-3 sm:col-span-1 p-4 flex flex-col">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M13.8167 33.7557C26.395 33.7557 33.275 23.334 33.275 14.2973C33.275 14.0007 33.275 13.7057 33.255 13.414C34.5937 12.4449 35.7489 11.245 36.6667 9.87066C35.4185 10.424 34.0943 10.7869 32.7384 10.9473C34.1661 10.0924 35.2346 8.74791 35.745 7.164C34.4029 7.96048 32.9345 8.52188 31.4034 8.824C30.3724 7.72694 29.0084 7.00039 27.5228 6.75684C26.0371 6.51329 24.5126 6.76633 23.1852 7.47678C21.8579 8.18723 20.8018 9.31545 20.1805 10.6868C19.5592 12.0581 19.4073 13.596 19.7484 15.0623C17.0294 14.9261 14.3694 14.2195 11.9411 12.9886C9.51285 11.7577 7.37059 10.0299 5.65337 7.91733C4.7789 9.42267 4.51102 11.2047 4.90427 12.9006C5.29751 14.5965 6.32232 16.0788 7.77004 17.0457C6.68214 17.0142 5.61776 16.7215 4.66671 16.1923V16.279C4.66736 17.8578 5.21403 19.3878 6.21404 20.6096C7.21404 21.8313 8.60582 22.6696 10.1534 22.9823C9.14639 23.2569 8.08986 23.2968 7.06504 23.099C7.50198 24.4581 8.35284 25.6467 9.49859 26.4984C10.6443 27.35 12.0277 27.8223 13.455 27.849C12.0369 28.9633 10.413 29.7871 8.67625 30.2732C6.93948 30.7594 5.12391 30.8984 3.33337 30.6823C6.46105 32.6896 10.1004 33.7542 13.8167 33.749"
-            fill="currentColor"></path>
-        </svg>
-        <h5 class="font-semibold text-xl mt-4">Twitter</h5>
-        <p class="mt-2" v-text="followTwitter" />
+        <p class="mt-2" v-text="contributeOnGithub" />
       </a>
     </div>
   </div>
 </template>
 <style scoped>
+
 .spotlight {
   background: linear-gradient(45deg, #3256fa 0%, #C600FF 50%, #ff0000 100%);
   filter: blur(20vh);
