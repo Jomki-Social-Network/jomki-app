@@ -8,6 +8,7 @@ API is powered by [Strapi](https://github.com/strapi/strapi), an open source Hea
 
 ```bash
 cd jomki-api/
+npm install
 npm run build
 npm run start
 ```
